@@ -69,7 +69,7 @@
     />
     <h3>Welcome, {$currentUser.username}!</h3>
     {#if $currentUser.isAdmin}
-        <p>You are an admin, and the admins moderate Youssef's Chat.</p>
+        <p>You are an admin, and admins moderate Youssef's Chat.</p>
     {/if}
     {#if $currentUser.hasChanceToChangeUsername}
         <p>You have a chance to change your username!</p>
@@ -80,9 +80,11 @@
         </button>
         <br /><br />
     {/if}
-    <a href="mailto:youssef.land@outlook.com" target="_blank" rel="noreferrer noopener" title="Click on this button and add an attachment with the picture you want as your proposed new avatar. You need to put your username in the message as well. Type as follows: &quot;Hello Youssef, I want to change my avatar for [insert your username]. Can you please get to PocketBase and upload the avatar there? [insert your signature here]&quot; If Youssef accordingly gives you the avatar and he tells you he did so, you will need to sign out and back in again to see your new avatar.">
-        <button>Want to change your avatar? (hover and wait for the tooltip to show itself for instructions)</button>
-    </a>
+    {#if !$currentUser.isAdmin && ($currentUser.username !== "Youssef" || $currentUser.username !== "Test123" || $currentUser.username !== "amogus")}
+        <a href="mailto:youssef.land@outlook.com" target="_blank" rel="noreferrer noopener" title="Click on this button and add an attachment with the picture you want as your proposed new avatar. You need to put your username in the message as well. Type as follows: &quot;Hello Youssef, I want to change my avatar for [insert your username]. Can you please get to PocketBase and upload the avatar there? [insert your signature here]&quot; If Youssef accordingly gives you the avatar and tells you he did so, you'll need to sign out and back in again to see your new avatar.">
+            <button>Want to change your avatar?</button>
+        </a>
+    {/if}
     <button
         class="sign-out"
         on:click={signOut}

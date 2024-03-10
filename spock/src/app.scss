@@ -77,6 +77,10 @@ button {
   }
 }
 
+.message {
+  text-align: normal;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
